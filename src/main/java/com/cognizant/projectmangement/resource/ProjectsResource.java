@@ -88,12 +88,13 @@ public class ProjectsResource {
 	 * @return projectDetailsResponse
 	 * @throws UserNotFoundException
 	 * @throws ProjectCreationException
+	 * @throws ProjectNotFoundException 
 	 */
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ProjectDetails> updateProjectDetails(@RequestBody ProjectDetails projectDetailsRequest)
-			throws UserNotFoundException, ProjectCreationException {
+			throws UserNotFoundException, ProjectCreationException, ProjectNotFoundException {
 		log.info("Update Project request received: " + projectDetailsRequest);
-		return (ResponseEntity<ProjectDetails>) ResponseEntity.ok(projectService.createProject(projectDetailsRequest));
+		return (ResponseEntity<ProjectDetails>) ResponseEntity.ok(projectService.updateProjectDetails(projectDetailsRequest));
 	}
 
 	/**
