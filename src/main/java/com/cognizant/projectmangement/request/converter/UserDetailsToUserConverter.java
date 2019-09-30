@@ -32,11 +32,11 @@ public class UserDetailsToUserConverter implements Converter<UserDetails, User> 
 		userData.setFirstName(userDetails.getFirstName());
 		userData.setLastName(userDetails.getLastName());
 		userData.setEmployeeId(userDetails.getEmployeeId());
-		if (null != userDetails.getProjectDetails()) {
+		if ((null != userDetails.getProjectDetails()) && (userDetails.getProjectDetails().getProjectId() > 0)) {
 			userData.setProject(
 					requestConversionUtils.populateProjectDataFromProjectDetails(userDetails.getProjectDetails()));
 		}
-		if (null != userDetails.getTaskDetails()) {
+		if ((null != userDetails.getTaskDetails()) && (userDetails.getTaskDetails().getTaskId() > 0)) {
 			userData.setTask(
 					requestConversionUtils.populateTaskDataFromTaskDetails(userDetails.getTaskDetails(), false, false));
 		}
